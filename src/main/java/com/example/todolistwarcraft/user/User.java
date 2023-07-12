@@ -22,7 +22,7 @@ public class User extends PanacheEntity {
 
     @Version
     public int version;
-    
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "role")
