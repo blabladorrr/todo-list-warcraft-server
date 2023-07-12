@@ -1,6 +1,7 @@
 package com.example.todolistwarcraft.user;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -47,5 +48,13 @@ public class UserResource {
     @Path("self")
     public Uni<User> getCurrentUser() {
         return userService.getCurrentUser();
+    }
+
+    @PUT
+    @Path("self/password")
+    @RolesAllowed("user")
+    public Uni<User> changePassword(PasswordChange passwordChange) {
+        return userService
+                .changePassword(passwordChange.currentPassword(), passwordChange.newPassword());
     }
 }
