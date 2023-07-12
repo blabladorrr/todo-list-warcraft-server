@@ -41,3 +41,5 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+src/main/resources/import.sql
+src/main/resources/import-dev.sql
