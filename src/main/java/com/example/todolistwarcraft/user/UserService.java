@@ -47,6 +47,10 @@ public class UserService {
 //                );
 //    }
 
+    public static boolean matches(User user, String password) {
+        return BcryptUtil.matches(password, user.password);
+    }
+
     public Uni<User> getCurrentUser() {
         // TODO: replace implementation once security is added to project
         return User.find("order by ID").firstResult();
