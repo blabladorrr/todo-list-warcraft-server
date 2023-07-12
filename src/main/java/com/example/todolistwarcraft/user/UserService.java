@@ -37,15 +37,15 @@ public class UserService {
                 .chain(s -> s.merge(user));
     }
 
-    @WithTransaction
-    public Uni<Void> delete(long id) {
-        return findById(id)
-                .chain(u -> Uni.combine().all().unis(
-                        Task.delete("user.id", u.id),
-                ).asTuple()
-                        .chain(t -> u.delete())
-                );
-    }
+//    @WithTransaction
+//    public Uni<Void> delete(long id) {
+//        return findById(id)
+//                .chain(u -> Uni.combine().all().unis(
+//                        Task.delete("user.id", u.id),
+//                ).asTuple()
+//                        .chain(t -> u.delete())
+//                );
+//    }
 
     public Uni<User> getCurrentUser() {
         // TODO: replace implementation once security is added to project
