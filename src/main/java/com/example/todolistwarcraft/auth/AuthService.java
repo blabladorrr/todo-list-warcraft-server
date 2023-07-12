@@ -1,6 +1,7 @@
 package com.example.todolistwarcraft.auth;
 
 import com.example.todolistwarcraft.user.UserService;
+import io.quarkus.hibernate.reactive.panache.common.WithSession;
 import io.quarkus.security.AuthenticationFailedException;
 import io.smallrye.jwt.build.Jwt;
 import io.smallrye.mutiny.Uni;
@@ -25,6 +26,7 @@ public class AuthService {
         this.userService = userService;
     }
 
+    @WithSession
     public Uni<String> authenticate(AuthRequest authRequest) {
         return userService.findByName(authRequest.name())
                 .onItem()
