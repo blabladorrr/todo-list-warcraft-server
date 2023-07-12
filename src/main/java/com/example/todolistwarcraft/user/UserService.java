@@ -74,8 +74,7 @@ public class UserService {
         return getCurrentUser()
                 .chain(u -> {
                     if (!matches(u, currentPassword)) {
-                        throw new ClientErrorException("Current password does not match",
-                                Response.Status.CONFLICT);
+                        throw new ClientErrorException("Current password does not match", Response.Status.CONFLICT);
                     }
                     u.setPassword(BcryptUtil.bcryptHash(newPassword));
                     return u.persistAndFlush();
