@@ -52,7 +52,7 @@ public class TaskResource {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("{id}/complete")
     public Uni<Boolean> setComplete(@PathParam("id") long id, boolean complete) {
         return taskService.setComplete(id, complete);
     }
